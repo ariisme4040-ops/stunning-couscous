@@ -203,16 +203,6 @@ async def trial(interaction: discord.Interaction, user: discord.Member):
 
     crime = truncate(extract_tagged_line(raw, "THE CRIME"))
 
-    # Pick up to 3 online members (excluding the accused and the bot)
-    online_members = [
-        m for m in interaction.guild.members
-        if m.id != user.id
-        and not m.bot
-        and m.status != discord.Status.offline
-    ]
-    jury = random.sample(online_members, min(3, len(online_members)))
-    jury_text = ", ".join(m.display_name for m in jury) if jury else "an empty courtroom"
-
     sentences = [
         "must apologize to the server in ALL CAPS.",
         "is banned from using reaction emojis for 24 hours (honour system).",
