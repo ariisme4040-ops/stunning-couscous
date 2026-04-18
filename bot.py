@@ -203,10 +203,6 @@ async def trial(interaction: discord.Interaction, user: discord.Member):
 
     crime = truncate(extract_tagged_line(raw, "THE CRIME"))
 
-    # Random verdict + jury selection
-    verdict = random.choice(["GUILTY", "NOT GUILTY"])
-    verdict_color = discord.Color.red() if verdict == "GUILTY" else discord.Color.green()
-
     # Pick up to 3 online members (excluding the accused and the bot)
     online_members = [
         m for m in interaction.guild.members
